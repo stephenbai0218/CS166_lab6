@@ -300,15 +300,32 @@ public class EmbeddedSQL {
    }//end Query4
 
    public static void Query5(EmbeddedSQL esql){
-      // Your code goes here.
-      // ...
-      // ...
+       try{
+         String query = "SELECT distinct pname FROM parts, catalog WHERE catalog.pid = parts.pid AND cost < ";
+         System.out.print("\tEnter cost: $");
+         String input = in.readLine();
+         query += input;
+
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query5
 
    public static void Query6(EmbeddedSQL esql){
-      // Your code goes here.
-      // ...
-      // ...
+       try{
+         String query = "SELECT distinct address FROM suppliers, catalog, parts WHERE  parts.pid = catalog.pid AND catalog.sid = suppliers.sid AND pname = '";
+         System.out.print("\tEnter cost: $");
+         String input = in.readLine();
+         query += input;
+	 query += "'";
+
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query6
 
 }//end EmbeddedSQL
