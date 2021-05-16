@@ -265,20 +265,38 @@ public class EmbeddedSQL {
 
    public static void Query2(EmbeddedSQL esql){
       // Your code goes here.
-      // ...
-      // ...
+     
+            try{
+         String query = "SELECT sid, count(*)  FROM catalog GROUP BY sid  HAVING count(*) >2";
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query2
 
    public static void Query3(EmbeddedSQL esql){
-      // Your code goes here.
-      // ...
-      // ...
+       // Your code goes here.
+     
+            try{
+         String query = "SELECT sname, count(*)  FROM catalog,suppliers ,parts WHERE catalog.sid = suppliers.sid AND parts.pid=catalog.pid AND color = 'Green' GROUP BY sname";
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query3
 
    public static void Query4(EmbeddedSQL esql){
-      // Your code goes here.
-      // ...
-      // ...
+       // Your code goes here.
+     
+            try{
+         String query = "SELECT distinct catalog.pid, cost FROM catalog, parts WHERE  (color = 'Green' or color = 'Red') AND cost = (SELECT max(cost ) FROM catalog WHERE catalog.pid = parts.pid)";
+         int rowCount = esql.executeQuery(query);
+         System.out.println ("total row(s): " + rowCount);
+      }catch(Exception e){
+         System.err.println (e.getMessage());
+      }
    }//end Query4
 
    public static void Query5(EmbeddedSQL esql){
