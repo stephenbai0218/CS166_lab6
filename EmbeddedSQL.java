@@ -251,7 +251,7 @@ public class EmbeddedSQL {
    public static void Query1(EmbeddedSQL esql){
       // Your code goes here.
             try{
-         String query = "select sid, count(*)  from catalog group by sid < ";
+         String query = "SELECT sid, count(*)  FROM catalog GROUP BY sid";
          //System.out.print("\tEnter cost: $");
          //String input = in.readLine();
          //query += input;
