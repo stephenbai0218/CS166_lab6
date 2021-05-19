@@ -291,7 +291,7 @@ public class EmbeddedSQL {
        // Your code goes here.
      
             try{
-         String query = "SELECT distinct catalog.pid, cost FROM catalog, parts WHERE  (color = 'Green' or color = 'Red') AND cost = (SELECT max(cost ) FROM catalog WHERE catalog.pid = parts.pid)";
+         String query = "SELECT distinct supplier.name, cost FROM catalog, parts WHERE  (color = 'Green' AND color = 'Red') AND cost = (SELECT max(cost ) FROM catalog WHERE catalog.pid = parts.pid)";
          int rowCount = esql.executeQuery(query);
          System.out.println ("total row(s): " + rowCount);
       }catch(Exception e){
